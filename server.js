@@ -10,6 +10,7 @@ const notion = new Client({ auth: process.env.NOTION_API_KEY });
 
 server.use(express.static('html'));
 server.use('/js', express.static('js'));
+server.use('/css', express.static('css'));
 
 server.get('/data', async (request, response) => {
     try {

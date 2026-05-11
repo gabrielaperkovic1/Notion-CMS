@@ -1,0 +1,28 @@
+body {
+    background-color: oldlace;
+    font-family: Avantgarde, "TeX Gyre Adventor", "URW Gothic L", sans-serif;
+    color: saddlebrown;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#recipes {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+#recipes li {
+    background-color: floralwhite;
+    border: solid 1px;
+    border-color: wheat;
+    border-radius: 13px;
+}
+
+#recipes h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
