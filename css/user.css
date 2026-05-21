@@ -1,6 +1,6 @@
 body {
     background-color: oldlace;
-    font-family: Avantgarde, "TeX Gyre Adventor", "URW Gothic L", sans-serif;
+    font-family: "Avantgarde", "TeX Gyre Adventor", "URW Gothic L", sans-serif;
     color: saddlebrown;
 }
 
@@ -10,19 +10,122 @@ h1 {
 }
 
 #recipes {
-    padding: 0;
-    margin: 0;
+    padding: 15px;
+    margin-left: 55px;
+    margin-right: 55px;
     list-style: none;
 }
 
 #recipes li {
     background-color: floralwhite;
     border: solid 1px;
-    border-color: wheat;
-    border-radius: 13px;
+    border-color: rgba(177, 145, 119, 0.615);
+    padding: 20px;
 }
 
 #recipes h2 {
     margin-top: 0;
     margin-bottom: 15px;
+}
+
+#recipes img {
+    height: 400px;
+}
+
+#recipes a {
+    text-decoration: none;
+    color: saddlebrown;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    color: rgba(177, 145, 119);
+    font-family: 'Lucida Handwriting';
+    border-bottom: 2px solid saddlebrown;
+}
+
+header img {
+    height: 70px;
+    width: 90px;
+}
+
+#search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  padding: 15px;
+  background-color: rgba(177, 145, 119, 0.515);
+}
+
+#searchInput {
+  width: 380px;
+  padding: 12px;
+  font-size: 13px;
+  border-radius: 15px;
+  border-color: transparent;
+  color: saddlebrown;
+}
+
+#search button {
+    background-color: transparent;
+    border-color: transparent;
+    color: white;
+    font-size: 20px;
+}
+
+#searchInput:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+#filter {
+    display: flex;
+    justify-content: right;
+    gap: 8px;
+    background-color: rgba(177, 145, 119, 0.515);
+    color: white;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    margin-bottom: 15px;
+}
+
+#filter button {
+    background-color: transparent;
+    border-radius: 5px;
+    border-color: white;
+    color: white;
+    border-width: 1px;
+}
+
+select {
+  font-size: 12px;
+  border-radius: 5px;
+  background-color: white;
+  border-color: transparent;
+  color: rgba(117, 117, 117);
+}
+
+label {
+    font-size: 13px;
+}
+
+
+.recipeInfo {
+    font-size: 13px;
+    color: rgba(177, 145, 119);
+    margin: 8px;
+}
+
+.recipeInfo h4 {
+    color: saddlebrown;
+    font-weight: bold;
+    display: inline;
+}
+
+footer {
+    background-color: rgba(177, 145, 119, 0.515);
+    padding: 25px;
+    border-bottom: 2px solid saddlebrown;
 }
