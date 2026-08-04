@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes Blog ADMIN</title>
+    <link rel="stylesheet" href="../css/user.css">
+</head>
+ 
+<body>
+ 
+    <header>
+      <img src="https://cdn.pixabay.com/photo/2018/05/21/12/37/restaurant-3418134_1280.png" alt="Recipe Blog logo">
+      <h1>RECIPES BLOG</h1>
+    </header>
+ 
+  <div>
+    <div>
+      <div id="loginForm">
+        <h2>Log in</h2>
+ 
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@example.com">
+        </div>
+ 
+        <div>
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter your password">
+        </div>
+ 
+        <button onclick="login()">Log in</button>
+      </div>
+    </div>
+ 
+    <div>
+      <div id="signupForm">
+        <h2>Sign up</h2>
+ 
+        <div>
+          <div>
+            <label for="firstName">First name</label>
+            <input type="text" id="firstName" placeholder="First name">
+          </div>
+ 
+          <div>
+            <label for="lastName">Last name</label>
+            <input type="text" id="lastName" placeholder="Last name">
+          </div>
+ 
+        </div>
+        <div>
+          <label for="nickname">Nickname</label>
+          <input type="text" id="nickname" placeholder="Nickname">
+        </div>
+ 
+        <div>
+          <label for="signupEmail">Email</label>
+          <input type="email" id="signupEmail" placeholder="you@example.com">
+        </div>
+ 
+        <div>
+          <label for="signupPassword">Password</label>
+          <input type="password" id="signupPassword" placeholder="Choose a password">
+        </div>
+ 
+        <button onclick="signup()">Sign up</button>
+ 
+        <br><br>
+      </div>
+    </div>
+ 
+  </div>
+ 
+  <div id="adminPanel" hidden>
+    <span>You are logged in</span>
+    <button onclick="logout()">Log out</button>
+  </div>
+ 
+  <script type="module" src="../js/authentication.js"></script>
+ 
+  <footer>
+        All shown images are taken from Unsplash.
+  </footer>
+ 
+</body>
+</html>
+ 

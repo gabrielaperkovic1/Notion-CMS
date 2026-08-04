@@ -12,6 +12,8 @@ server.use(express.static('html'));
 server.use('/js', express.static('js'));
 server.use('/css', express.static('css'));
 
+server.use('/admin', express.static('html/admin.html'));
+
 server.get('/data', async (request, response) => {
     try {
         const notionResponse = await notion.dataSources.query({
@@ -31,3 +33,4 @@ server.get('/data', async (request, response) => {
 server.listen(port, () => {
     console.log(`Server is running on http://${hostname}:${port}`);
 });
+
