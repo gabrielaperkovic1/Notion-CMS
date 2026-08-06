@@ -8,14 +8,15 @@
 </head>
 <body>
     <header>
-            <img src="https://cdn.pixabay.com/photo/2018/05/21/12/37/restaurant-3418134_1280.png" alt="Recipe Blog logo">
-            <h1>RECIPES BLOG</h1>
+        <a href="/">
+            <img src="/logo/logonew2.png" alt="Recipe Blog logo"></a>
+           <a href="/"><h1 id="logoTitle">RECIPES BLOG</h1></a>
+        
     </header>
 
     <div id="search">
     <input type="text" id="searchInput" placeholder="Search recipes...">
-    <button><span>🔍︎</span></button>
-    </div>
+    <button onclick="searchRecipes(document.getElementById('searchInput').value)"><span>🔍︎</span></button>    </div>
 
     <div id="filter">
     <label for="category">Category:</label>
