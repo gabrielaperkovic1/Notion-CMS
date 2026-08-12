@@ -10,7 +10,7 @@ async function loadRecipeDetails() {
         
     for (let i = 0; i < data.length; i++) {
         let recipe = data[i].properties;
-        let recipeID = recipe['ID'].number;
+        let recipeID = recipe['ID'].unique_id.number;
 
         if (recipeID == id){
             let name = recipe['Name of dish'].title[0].plain_text;

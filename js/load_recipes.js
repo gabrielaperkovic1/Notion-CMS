@@ -9,7 +9,7 @@ async function loadRecipes() {
     for (let i = 0; i < data.length; i++) {
         let recipe = data[i].properties;
 
-        let recipeID = recipe['ID'].number;
+        let recipeID = recipe['ID'].unique_id.number;
         let name = recipe['Name of dish'].title[0].plain_text;
         let photo = recipe['Photo'].files[0].external.url;
         let ingredients = recipe['Ingredients'].rich_text[0].plain_text;
@@ -43,7 +43,7 @@ function filterRecipes(category) {
         let recipeCategory = recipe['Category'].rich_text[0].plain_text;
    
         if (category === 'All' || recipeCategory === category) {
-            let recipeID = recipe['ID'].number;
+            let recipeID = recipe['ID'].unique_id.number;
             let name = recipe['Name of dish'].title[0].plain_text;
             let photo = recipe['Photo'].files[0].external.url;
             let ingredients = recipe['Ingredients'].rich_text[0].plain_text;
@@ -79,7 +79,7 @@ function searchRecipes(search) {
         let nameLower = name.toLowerCase();
 
         if (nameLower.includes(search)) {
-            let recipeID = recipe['ID'].number;
+            let recipeID = recipe['ID'].unique_id.number;
             let photo = recipe['Photo'].files[0].external.url;
             let author = recipe['Author'].rich_text[0].plain_text;
             let prepTime = recipe['Prep time'].rich_text[0].plain_text;

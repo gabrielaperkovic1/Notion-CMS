@@ -30,6 +30,7 @@ async function signup() {
     } catch (error) {
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
     }
 }
 
@@ -41,14 +42,23 @@ async function login() {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
+        const idToken = await user.getIdToken();
+
     } catch (error) {
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
     }
 }
 
-function logout() {
-    signOut(auth);
+async function logout() {
+    try{
+        await signOut(auth);
+    } catch (error) {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+    }
 }
 
 function isLoggedIn(user) {

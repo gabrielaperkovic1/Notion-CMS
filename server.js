@@ -1,6 +1,8 @@
 import 'dotenv/config';
 import { Client } from '@notionhq/client';
 import express from 'express';
+import { initializeApp, applicationDefault } from 'firebase-admin/app';
+import { getAuth } from 'firebase-admin/auth';
 
 const server = express();
 const port = 6400;
@@ -8,12 +10,40 @@ const hostname = 'localhost';
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 
+initializeApp({
+    credential: applicationDefault(),
+});
+
+function checkAuth(idToken) {
+    return getAuth()
+        .verifyIdToken(idToken)
+        .then((decodedToken) => {
+            const uid = decodedToken.uid;
+            console.log('Token is valid.');
+            return uid;
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage);
+            return null;
+        });
+}
+
 server.use(express.static('html'));
 server.use('/js', express.static('js'));
 server.use('/css', express.static('css'));
 server.use('/logo', express.static('logo'));
 
-server.use('/admin', express.static('html/admin.html'));
+server.get('/admin', (request, response) => {
+    response.sendFile('admin.html', { root: 'html' });
+});
+
+server.get('/recipe_settings', (request, response) => {
+    response.sendFile('recipe_settings.html', { root: 'html' });
+});
+
+server.use(express.json());
 
 server.get('/data', async (request, response) => {
     try {
@@ -30,6 +60,32 @@ server.get('/data', async (request, response) => {
         response.status(500).send("Server error: " + e.name + "\n" + e.message);
     }
 });
+
+server.get('/myRecipes', async (request, response) => {
+    const idToken = request.headers.authorization;
+    const uid = await checkAuth(idToken);
+
+    if (!uid) {
+        return response.status(401).send("Not logged in");
+    }
+
+    try {
+        const notionResponse = await notion.dataSources.query({
+            data_source_id: process.env.NOTION_DATABASE_ID,
+            filter: {
+                property: "Owner UID",
+                rich_text: { equals: uid }
+            }
+        });
+
+        response.json(notionResponse.results);
+
+    } catch (e) {
+        console.log("Error: " + e.name + "\n" + e.message);
+        response.status(500).send("Server error: " + e.name + "\n" + e.message);
+    }
+});
+
 
 server.listen(port, () => {
     console.log(`Server is running on http://${hostname}:${port}`);
