@@ -29,7 +29,7 @@ h1 {
 }
 
 #recipes img {
-    height: 400px;
+    width: 50%
 }
 
 #recipes a {
@@ -124,6 +124,10 @@ label {
     display: inline;
 }
 
+.recipeInfo img {
+    width: 50%;
+}
+
 footer {
     background-color: rgba(177, 145, 119, 0.515);
     padding: 25px;
@@ -141,4 +145,21 @@ header a {
 header a,
 header a h1 {
     text-decoration: none;
+}
+
+#recipes {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 20px;
+}
+
+#recipes img {
+    width: 100%;
+}
+
+#recipeDetails img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
 }

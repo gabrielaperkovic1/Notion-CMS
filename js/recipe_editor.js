@@ -88,6 +88,7 @@ async function recipeSettings() {
                 <h4>Difficulty:</h4> ${difficulty}/5
                 <h4>Ingredients:</h4> <pre>${ingredients}</pre>
                 <h4>Instructions:</h4> <p>${instructions}</p>
+                <button>Edit Recipe</button>
                 `;
 
             return;
@@ -96,3 +97,37 @@ async function recipeSettings() {
 
     recipeElement.innerHTML = '<p>Recipe not found.</p>';
 }
+
+async function createRecipe() {
+
+    let idToken = await auth.currentUser.getIdToken();
+
+    let body = {
+        name: document.getElementById('newRecipeName').value,
+        photo: document.getElementById('newRecipePhoto').value,
+        ingredients: document.getElementById('newRecipeIngredients').value,
+        instructions: document.getElementById('newRecipeInstructions').value,
+        prepHours: Number(document.getElementById('newRecipePrepH').value),
+        prepMinutes: Number(document.getElementById('newRecipePrepMin').value),
+        category: document.getElementById('newRecipeCategory').value,
+        difficulty: Number(document.getElementById('newRecipeDifficulty').value)
+    };
+
+    let response = await fetch('/addRecipe', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': idToken
+        },
+        body: JSON.stringify(body)
+    });
+
+ if (response.ok) {
+       location.reload();
+    } else {
+        document.getElementById('createStatus').innerHTML = 'Something went wrong.';
+    }
+}
+
+
+window.createRecipe = createRecipe;

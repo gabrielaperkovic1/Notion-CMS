@@ -21,14 +21,14 @@ async function loadRecipes() {
 
         document.getElementById('recipes').innerHTML += `<li>
                 <a href="./recipe.html?id=${recipeID}"><h2>${name}</h2></a>
+                <img src="${photo}" alt="${name}">
                 <div class="recipeInfo">
                     <h4>Category:</h4> ${category}  |
                     <h4>Author:</h4> ${author}  |
                     <h4>Prep time:</h4>${prepTime}  |
                     <h4>Difficulty:</h4> ${difficulty}/5 
                 </div>
-                <img src="${photo}" alt="${name}">
-                </li><br>`;
+                </li>`;
         
     }
 }
