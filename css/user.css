@@ -163,3 +163,42 @@ header a h1 {
     margin-right: auto;
     width: 60%;
 }
+
+#recipeDetails {
+    padding: 15px;
+    margin-left: 55px;
+    margin-right: 55px;
+    list-style: none;
+}
+
+#recipeDetails li {
+    background-color: floralwhite;
+    border: solid 1px;
+    border-color: rgba(177, 145, 119, 0.615);
+    padding: 20px;
+}
+
+#recipeDetails h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+#recipeDetails h4 {
+    margin-bottom: 5px;
+}
+
+#recipeDetails pre {
+    white-space: pre-wrap;
+    font-family: inherit;
+}
+
+#recipeDetails p {
+    font-size: 13px;
+    color: rgba(177, 145, 119);
+}
+
+#infoText {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}

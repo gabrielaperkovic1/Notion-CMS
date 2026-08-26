@@ -89,12 +89,17 @@ async function recipeSettings() {
                 <h4>Ingredients:</h4> <pre>${ingredients}</pre>
                 <h4>Instructions:</h4> <p>${instructions}</p>
                 <button>Edit Recipe</button>
+                <button id="deleteRecipe">Delete Recipe</button>
                 `;
+
+            document.getElementById('deleteRecipe').addEventListener('click', function() {
+            deleteRecipe();
+            });
 
             return;
         }
     }
-
+    
     recipeElement.innerHTML = '<p>Recipe not found.</p>';
 }
 
@@ -130,4 +135,35 @@ async function createRecipe() {
 }
 
 
-window.createRecipe = createRecipe;
+const newRecipeForm = document.getElementById('newRecipeForm');
+
+if (newRecipeForm) {
+    newRecipeForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        createRecipe();
+    });
+}
+
+async function deleteRecipe() {
+    let idToken = await auth.currentUser.getIdToken();
+
+    let params = new URLSearchParams(window.location.search);
+    let pageId = params.get('id');
+
+    let response = await fetch('/deleteRecipe', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': idToken
+        },
+        body: JSON.stringify({
+            pageId: pageId
+        })
+    });
+
+    if (response.ok) {
+        location.href = '/admin';
+    } else {
+        alert('Something went wrong.');
+    }
+}

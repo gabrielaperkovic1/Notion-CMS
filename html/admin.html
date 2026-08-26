@@ -80,53 +80,55 @@
     <div id="myRecipes"></div>
 
     <h2>New Recipe</h2>
-    <label for="newRecipeName">Name of dish</label>
-    <input type="text" id="newRecipeName" placeholder="Name of dish" required  >
-    <br>
+    <form id="newRecipeForm">
+      <label for="newRecipeName">Name of dish</label>
+      <input type="text" id="newRecipeName" placeholder="Name of dish" required  >
+      <br>
 
-    <label for="newRecipePhoto">Photo URL</label>
-    <input type="url" id="newRecipePhoto" placeholder="https://exampleOfUrl.com/photo.jpg" required>
-    <br>
+      <label for="newRecipePhoto">Photo URL</label>
+      <input type="url" id="newRecipePhoto" placeholder="https://exampleOfUrl.com/photo.jpg" required>
+      <br>
 
-    <label for="newRecipeIngredients">Ingredients</label>
-    <textarea id="newRecipeIngredients" placeholder="Ingredients" rows="7" cols="45" required></textarea>
-    <br>
+      <label for="newRecipeIngredients">Ingredients</label>
+      <textarea id="newRecipeIngredients" placeholder="Ingredients" rows="7" cols="45" required></textarea>
+      <br>
 
-    <label for="newRecipeInstructions">Instructions</label>
-    <textarea id="newRecipeInstructions" placeholder="Instructions" rows="7" cols="45" required></textarea>
-    <br>
+      <label for="newRecipeInstructions">Instructions</label>
+      <textarea id="newRecipeInstructions" placeholder="Instructions" rows="7" cols="45" required></textarea>
+      <br>
 
-    <label for="newRecipePrepH">Prep time</label>
+      <label for="newRecipePrepH">Prep time</label>
 
-    <input type="number" id="newRecipePrepH" min="0"  value="0" required>
-    <span>h</span>
+      <input type="number" id="newRecipePrepH" min="0"  value="0" required>
+      <span>h</span>
 
-    <input type="number" id="newRecipePrepMin" min="0" max="59" value="0" required>
-    <span>min</span>
+      <input type="number" id="newRecipePrepMin" min="0" max="59" value="0" required>
+      <span>min</span>
 
-    <br>
+      <br>
 
-    <label for="newRecipeCategory">Category</label>
-    <select id="newRecipeCategory" required>
-        <option value="">Choose category</option>
-        <option value="Main Dish">Main Dish</option>
-        <option value="Side Dish">Side Dish</option>
-        <option value="Snack">Dessert</option>
-    </select>
-    <br>
+      <label for="newRecipeCategory">Category</label>
+      <select id="newRecipeCategory" required>
+          <option value="">Choose category</option>
+          <option value="Main Dish">Main Dish</option>
+          <option value="Side Dish">Side Dish</option>
+          <option value="Snack">Dessert</option>
+      </select>
+      <br>
 
-    <label for="newRecipeDifficulty">Difficulty</label>
-    <select id="newRecipeDifficulty" required>
-        <option value="">Choose difficulty</option>
-        <option value="1">1 - Very easy</option>
-        <option value="2">2 - Easy</option>
-        <option value="3">3 - Medium</option>
-        <option value="4">4 - Hard</option>
-        <option value="5">5 - Very hard</option>
-    </select>
-    <br>
+      <label for="newRecipeDifficulty">Difficulty</label>
+      <select id="newRecipeDifficulty" required>
+          <option value="">Choose difficulty</option>
+          <option value="1">1 - Very easy</option>
+          <option value="2">2 - Easy</option>
+          <option value="3">3 - Medium</option>
+          <option value="4">4 - Hard</option>
+          <option value="5">5 - Very hard</option>
+      </select>
+      <br>
 
-    <button onclick="createRecipe()">Add Recipe</button>
+      <button type="submit">Add Recipe</button>
+    </form>
 
     <p id="createStatus"></p>
   </div>

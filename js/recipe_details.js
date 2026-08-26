@@ -26,10 +26,18 @@ async function loadRecipeDetails() {
             recipeInfo.innerHTML += `<li>
                 <h2>${name}</h2>
                 <img src="${photo}" alt="${name}">
-                <h4>Category:</h4> ${category}
-                <h4>Author:</h4> ${author}
-                <h4>Prep time:</h4>${prepTime}
-                <h4>Difficulty:</h4> ${difficulty}/5
+                <div id=infoText>
+                <div class="leftSmallText">
+                    <h4>Category:</h4> ${category}
+                    <br>
+                    <h4>Author:</h4> ${author}
+                </div>
+                <div class="rightSmallText">
+                    <h4>Prep time:</h4> ${prepTime}
+                    <br>
+                    <h4>Difficulty:</h4> ${difficulty}/5
+                </div>
+                </div>
                 <h4>Ingredients:</h4> <pre>${ingredients}</pre>
                 <h4>Instructions:</h4> <p>${instructions}</p>
                 `;

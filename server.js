@@ -123,11 +123,35 @@ server.post('/addRecipe', async (request, response) => {
                 "Prep time": { rich_text: [{ text: { content: prepTime } }] },
                 "Category" : { rich_text: [{ text: { content: category } }] },
                 "Difficulty": { number: difficulty },
-                "Published": { checkbox: false }
+                "Published": { checkbox: true }
             }
         });
 
         response.json(newPage);
+    } catch (e) {
+        console.log("Error: " + e.name + "\n" + e.message);
+        response.status(500).send("Server error: " + e.name + "\n" + e.message);
+    }
+});
+
+server.delete('/deleteRecipe', async (request, response) => {
+    const idToken = request.headers.authorization;
+    const uid = await checkAuth(idToken);
+
+    if (!uid) {
+        return response.status(401).send("Not logged in");
+    }
+
+    const pageId = request.body.pageId;
+
+    try {
+        const deletePage = await notion.pages.update({
+            page_id: pageId,
+            in_trash: true
+        });
+
+        response.json(deletePage);
+
     } catch (e) {
         console.log("Error: " + e.name + "\n" + e.message);
         response.status(500).send("Server error: " + e.name + "\n" + e.message);
