@@ -113,27 +113,36 @@ async function recipeSettings() {
             let difficulty = recipe['Difficulty'].number;
             let published = recipe['Published'].checkbox;
 
-            recipeElement.innerHTML = `<li>
+        recipeElement.innerHTML = `<li>
                 <h2>${name}</h2>
                 <div class="editbuttons">
-                <button id="editRecipe">Edit Recipe</button>
-                <button id="deleteRecipe">Delete Recipe</button>
-                </div>
+                    <button class="buttons" id="editRecipe">Edit Recipe</button>
+                    <button class="buttons" id="deleteRecipe">Delete Recipe</button></div>
                 <img src="${photo}" alt="${name}">
-                <h4 contenteditable="true">Category:</h4> ${category}
-                <h4>Author:</h4> ${author}
-                <h4>Prep time:</h4>${prepTime}
-                <h4>Difficulty:</h4> ${difficulty}/5
-                <h4>Ingredients:</h4> <pre>${ingredients}</pre>
-                <h4>Instructions:</h4> <p>${instructions}</p>
-                `;
+                <div id="infoText">
+                    <div class="leftSmallText">
+                        <h4>Category:</h4> ${category}
+                        <br>
+                        <h4>Author:</h4> ${author}
+                    </div>
+
+                    <div class="rightSmallText">
+                        <h4>Prep time:</h4> ${prepTime}
+                        <br>
+                        <h4>Difficulty:</h4> ${difficulty}/5
+                    </div>
+                </div>
+                <h4>Ingredients:</h4><pre>${ingredients}</pre>
+                <h4>Instructions:</h4><p>${instructions}</p>
+            </li>
+        `;
 
             document.getElementById('deleteRecipe').addEventListener('click', function() {
             deleteRecipe();
             });
 
             document.getElementById('editRecipe').addEventListener('click', function() {
-                document.getElementById('editRecipeForm').hidden = false;
+                document.getElementById('editRecipeSection').hidden = false;
 
                 document.getElementById('editRecipeName').value = name;
                 document.getElementById('editRecipePhoto').value = photo;
@@ -208,6 +217,11 @@ if (newRecipeForm) {
 }
 
 async function deleteRecipe() {
+
+    if (!confirm('Are you sure you want to delete this recipe?')) {
+        return;
+    }
+
     let idToken = await auth.currentUser.getIdToken();
 
     let params = new URLSearchParams(window.location.search);
@@ -225,7 +239,7 @@ async function deleteRecipe() {
     });
 
     if (response.ok) {
-        location.href = '/admin';
+        location.href = '/author';
     } else {
         alert('Something went wrong.');
     }
@@ -267,10 +281,34 @@ async function updateRecipe() {
     }
 }
 
-const saveRecipeEdit = document.getElementById('saveRecipeEdit');
+const editRecipeForm = document.getElementById('editRecipeForm');
 
-if (saveRecipeEdit) {
-    saveRecipeEdit.addEventListener('click', function () {
+if (editRecipeForm) {
+    editRecipeForm.addEventListener('submit', function(event) {
+        event.preventDefault();
         updateRecipe();
+    });
+}
+
+const showRecipeForm = document.getElementById("showRecipeForm"); 
+const newRecipeSection = document.getElementById("newRecipeSection"); 
+ 
+if (showRecipeForm && newRecipeSection) { 
+    showRecipeForm.addEventListener("click", function () { 
+        newRecipeSection.hidden = false; 
+    }); 
+}
+
+const cancelEdit = document.getElementById('cancelEdit');
+if (cancelEdit) {
+    cancelEdit.addEventListener('click', function() {
+        document.getElementById('editRecipeSection').hidden = true;
+    });
+}
+
+const cancelAdd = document.getElementById('cancelAdd');
+if (cancelAdd) {
+    cancelAdd.addEventListener('click', function() {
+        document.getElementById('newRecipeSection').hidden = true;
     });
 }

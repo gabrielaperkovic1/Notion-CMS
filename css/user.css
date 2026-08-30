@@ -157,42 +157,48 @@ header a h1 {
     width: 100%;
 }
 
-#recipeDetails img {
+#recipeDetails img, #recipe img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 60%;
+    border: solid 1px;
+    border-color: rgba(177, 145, 119, 0.615);
+    width: 50%;
 }
 
-#recipeDetails {
+#recipe img {
+    margin-top: 2%;
+}
+
+#recipeDetails, #recipe {
     padding: 15px;
     margin-left: 55px;
     margin-right: 55px;
     list-style: none;
 }
 
-#recipeDetails li {
+#recipeDetails li, #recipe li {
     background-color: floralwhite;
     border: solid 1px;
     border-color: rgba(177, 145, 119, 0.615);
     padding: 20px;
 }
 
-#recipeDetails h2 {
+#recipeDetails h2, #recipe h2 {
     margin-top: 0;
     margin-bottom: 15px;
 }
 
-#recipeDetails h4 {
+#recipeDetails h4, #recipe h4 {
     margin-bottom: 5px;
 }
 
-#recipeDetails pre {
+#recipeDetails pre, #recipe pre {
     white-space: pre-wrap;
     font-family: inherit;
 }
 
-#recipeDetails p {
+#recipeDetails p, #recipe p {
     font-size: 13px;
     color: rgba(177, 145, 119);
 }
@@ -224,7 +230,8 @@ header a h1 {
     all: revert;
 }
 
-#newRecipeSection {
+#newRecipeSection,
+#editRecipeSection {
     width: 40%;
     margin: 20px auto;
     padding: 20px;
@@ -285,4 +292,8 @@ header a h1 {
 .editbuttons button:hover {
     background-color: saddlebrown;
     color: wheat
+}
+
+#cancelAdd, #cancelEdit{
+    float: right;
 }

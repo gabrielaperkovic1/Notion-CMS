@@ -3,15 +3,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipes Blog ADMIN</title>
+    <title>Recipes Blog Editor</title>
     <link rel="stylesheet" href="../css/user.css">
 </head>
  
 <body>
  
     <header>
-        <a href="/admin"><img src="/logo/logonew2.png" alt="Recipe Blog logo"></a>
-        <a href="/admin"><h1 id="logoTitle">RECIPES BLOG</h1></a>
+        <a href="/author"><img src="/logo/logonew2.png" alt="Recipe Blog logo"></a>
+        <a href="/author"><h1 id="logoTitle">RECIPES EDITOR</h1></a>
     </header>
  
   <div>
@@ -81,25 +81,27 @@
   </div>
     
   <div id="newRecipeSection" hidden>
+      <button type="button" class="buttons" id="cancelAdd">X</button>
       <h3>ADD NEW RECIPE</h2>
+
       <form id="newRecipeForm">
-        <label for="newRecipeName">Name of dish</label>
+        <label for="newRecipeName">Name of dish: </label>
         <input type="text" id="newRecipeName" placeholder="Name of dish" required  >
         <br>
 
-        <label for="newRecipePhoto">Photo URL</label>
+        <label for="newRecipePhoto">Photo URL: </label>
         <input type="url" id="newRecipePhoto" placeholder="https://exampleOfUrl.com/photo.jpg" required>
         <br>
 
-        <label for="newRecipeIngredients">Ingredients</label>
-        <textarea id="newRecipeIngredients" placeholder="Ingredients" rows="7" cols="45" required></textarea>
+        <label for="newRecipeIngredients">Ingredients: </label>
+        <textarea id="newRecipeIngredients" placeholder="Ingredients" rows="7" cols="35" required></textarea>
         <br>
 
-        <label for="newRecipeInstructions">Instructions</label>
-        <textarea id="newRecipeInstructions" placeholder="Instructions" rows="7" cols="45" required></textarea>
+        <label for="newRecipeInstructions">Instructions: </label>
+        <textarea id="newRecipeInstructions" placeholder="Instructions" rows="7" cols="35" required></textarea>
         <br>
 
-        <label for="newRecipePrepH">Prep time</label>
+        <label for="newRecipePrepH">Prep time: </label>
 
         <input type="number" id="newRecipePrepH" min="0"  value="0" required>
         <span>h</span>
@@ -109,7 +111,7 @@
 
         <br>
 
-        <label for="newRecipeCategory">Category</label>
+        <label for="newRecipeCategory">Category: </label>
         <select id="newRecipeCategory" required>
             <option value="">Choose category</option>
             <option value="Main Dish">Main Dish</option>
@@ -118,7 +120,7 @@
         </select>
         <br>
 
-        <label for="newRecipeDifficulty">Difficulty</label>
+        <label for="newRecipeDifficulty">Difficulty: </label>
         <select id="newRecipeDifficulty" required>
             <option value="">Choose difficulty</option>
             <option value="1">1 - Very easy</option>
@@ -130,7 +132,7 @@
         <br>
 
         <br>
-        <label for="newRecipeStatus">Publish</label>
+        <label for="newRecipeStatus">Publish: </label>
         <input type="checkbox" id="newRecipeStatus">
         </br>
 

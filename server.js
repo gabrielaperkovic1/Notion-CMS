@@ -38,12 +38,8 @@ server.use('/js', express.static('js'));
 server.use('/css', express.static('css'));
 server.use('/logo', express.static('logo'));
 
-server.get('/admin', (request, response) => {
-    response.sendFile('admin.html', { root: 'html' });
-});
-
-server.get('/recipe_settings', (request, response) => {
-    response.sendFile('recipe_settings.html', { root: 'html' });
+server.get('/author', (request, response) => {
+    response.sendFile('author.html', { root: 'html' });
 });
 
 server.use(express.json());
