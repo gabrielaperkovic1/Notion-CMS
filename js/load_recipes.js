@@ -55,14 +55,14 @@ function filterRecipes(category) {
 
         document.getElementById('recipes').innerHTML += `<li>
                 <a href="./recipe.html?id=${recipeID}"><h2>${name}</h2></a>
+                <img src="${photo}" alt="${name}">
                 <div class="recipeInfo">
-                <h4>Category:</h4> ${category} |
+                <h4>Category:</h4> ${category}  |
                 <h4>Author:</h4> ${author}  |
                 <h4>Prep time:</h4>${prepTime}  |
                 <h4>Difficulty:</h4> ${difficulty}/5 
                 </div>
-                <img src="${photo}" alt="${name}">
-                </li><br>`;
+                </li>`;
         }
     }
 
@@ -86,16 +86,16 @@ function searchRecipes(search) {
             let category = recipe['Category'].rich_text[0].plain_text;
             let difficulty = recipe['Difficulty'].number;
 
-            document.getElementById('recipes').innerHTML += `<li>
+        document.getElementById('recipes').innerHTML += `<li>
                 <a href="./recipe.html?id=${recipeID}"><h2>${name}</h2></a>
-                <div class="recipeInfo">
-                    <h4>Category:</h4> ${category} |
-                    <h4>Author:</h4> ${author}  |
-                    <h4>Prep time:</h4>${prepTime}  |
-                    <h4>Difficulty:</h4> ${difficulty}/5 
-                </div>
                 <img src="${photo}" alt="${name}">
-                </li><br>`;
+                <div class="recipeInfo">
+                <h4>Category:</h4> ${category}  |
+                <h4>Author:</h4> ${author}  |
+                <h4>Prep time:</h4>${prepTime}  |
+                <h4>Difficulty:</h4> ${difficulty}/5 
+                </div>
+                </li>`;
         }
     }
 }

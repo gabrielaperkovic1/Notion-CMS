@@ -202,3 +202,87 @@ header a h1 {
     justify-content: space-between;
     font-size: 13px;
 }
+
+#logoutButton {
+    float: right;
+}
+
+.buttons {
+    background-color: transparent;
+    border: 1px solid saddlebrown;
+    border-radius: 5px;
+    color: saddlebrown;
+    padding: 5px 10px;
+}
+
+.buttons:hover {
+    background-color: saddlebrown;
+    color: wheat
+}
+
+#newRecipeDifficulty, #newRecipeCategory{
+    all: revert;
+}
+
+#newRecipeSection {
+    width: 40%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: floralwhite;
+    border: solid 1px;
+    border-color: rgba(177, 145, 119, 0.615);
+}
+
+#recipeHeader {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.draftRecipes,
+.publishedRecipes {
+    border: solid 1px;
+    border-color: rgba(177, 145, 119, 0.615);
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: floralwhite;
+}
+
+.draftRecipes a {
+    text-decoration-style: dashed;
+    color: rgba(139, 69, 19, 0.584);
+}
+
+.publishedRecipes a {
+    text-decoration: underline;
+    color: rgba(139, 69, 19, 0.584);
+}
+
+
+#loginForm,
+#signupForm {
+    background-color: floralwhite;
+    border: solid 1px;
+    border-color: rgba(177, 145, 119, 0.615);
+    padding: 20px;
+    width: 40%;
+    margin: 20px auto;
+}
+
+.editbuttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.editbuttons button {
+    background-color: transparent;
+    border: 1px solid saddlebrown;
+    border-radius: 5px;
+    color: saddlebrown;
+    padding: 5px 10px;
+}
+
+.editbuttons button:hover {
+    background-color: saddlebrown;
+    color: wheat
+}

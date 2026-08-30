@@ -106,6 +106,7 @@ server.post('/addRecipe', async (request, response) => {
     const category = request.body.category;
     const difficulty = request.body.difficulty;
     const prepTime = `${prepHours} h ${prepMinutes} min`;
+    const published = request.body.published;
 
     try {
         const userDoc = await db.collection('users').doc(uid).get();
@@ -123,7 +124,7 @@ server.post('/addRecipe', async (request, response) => {
                 "Prep time": { rich_text: [{ text: { content: prepTime } }] },
                 "Category" : { rich_text: [{ text: { content: category } }] },
                 "Difficulty": { number: difficulty },
-                "Published": { checkbox: true }
+                "Published": { checkbox: published }
             }
         });
 
@@ -151,6 +152,49 @@ server.delete('/deleteRecipe', async (request, response) => {
         });
 
         response.json(deletePage);
+
+    } catch (e) {
+        console.log("Error: " + e.name + "\n" + e.message);
+        response.status(500).send("Server error: " + e.name + "\n" + e.message);
+    }
+});
+
+server.patch('/updateRecipe', async (request, response) => {
+    const idToken = request.headers.authorization;
+    const uid = await checkAuth(idToken);
+
+    if (!uid) {
+        return response.status(401).send("Not logged in");
+    }
+
+    const pageId = request.body.pageId;
+    const name = request.body.name;
+    const photo = request.body.photo;
+    const ingredients = request.body.ingredients;
+    const instructions = request.body.instructions;
+    const prepHours = request.body.prepHours;
+    const prepMinutes = request.body.prepMinutes;
+    const category = request.body.category;
+    const difficulty = request.body.difficulty;
+    const prepTime = `${prepHours} h ${prepMinutes} min`;
+    const published = request.body.published;
+
+    try {
+        const updatePage = await notion.pages.update({
+            page_id: pageId,
+            properties: {
+                "Name of dish": { title: [{ text: { content: name } }] },
+                "Photo": { files: [{ name: 'photo', external: { url: photo } }] },
+                "Ingredients": { rich_text: [{ text: { content: ingredients } }] },
+                "Instructions": { rich_text: [{ text: { content: instructions } }] },
+                "Prep time": { rich_text: [{ text: { content: prepTime } }] },
+                "Category": { rich_text: [{ text: { content: category } }] },
+                "Difficulty": { number: difficulty },
+                "Published": { checkbox: published }
+            }
+        });
+
+        response.json(updatePage);
 
     } catch (e) {
         console.log("Error: " + e.name + "\n" + e.message);

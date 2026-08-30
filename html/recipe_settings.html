@@ -23,7 +23,7 @@
 
     <div id="recipe"></div>
 
-        <div id="editRecipeForm" hidden>
+    <div id="editRecipeForm" hidden>
         <h2>Edit Recipe</h2>
 
         <label for="editRecipeName">Name of dish</label>
@@ -72,7 +72,11 @@
         </select>
         <br>
 
-        <button onclick="saveRecipeEdit()">Save Changes</button>
+        <label for="editRecipeStatus">Publish</label>
+        <input type="checkbox" id="editRecipeStatus">
+        <br>
+
+        <button id="saveRecipeEdit">Save Changes</button>
 
         <p id="editStatus"></p>
     </div>
