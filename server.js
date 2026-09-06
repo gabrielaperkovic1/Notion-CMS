@@ -69,6 +69,11 @@ server.get('/myRecipes', async (request, response) => {
     }
 
     try {
+
+        const userDoc = await db.collection('users').doc(uid).get();
+        const firstName = userDoc.data().firstName;
+        const lastName = userDoc.data().lastName;
+
         const notionResponse = await notion.dataSources.query({
             data_source_id: process.env.NOTION_DATABASE_ID,
             filter: {
@@ -77,7 +82,11 @@ server.get('/myRecipes', async (request, response) => {
             }
         });
 
-        response.json(notionResponse.results);
+        response.json({
+            firstName: firstName,
+            lastName: lastName,
+            recipes: notionResponse.results
+        });
 
     } catch (e) {
         console.log("Error: " + e.name + "\n" + e.message);

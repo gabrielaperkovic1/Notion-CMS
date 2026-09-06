@@ -26,11 +26,14 @@ async function signup() {
         };
 
         await setDoc(doc(db, "users", user.uid), userData);
+        location.reload();
 
     } catch (error) {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
+
+        alert(errorMessage);
     }
 }
 
@@ -48,12 +51,22 @@ async function login() {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
+
+        alert('Incorrect email or password.');
     }
 }
 
 async function logout() {
     try{
         await signOut(auth);
+            
+        document.getElementById("publishedRecipes").innerHTML = '';
+        document.getElementById("draftRecipes").innerHTML = '';
+        const greeting = document.getElementById("greeting");
+        if (greeting) {
+            greeting.innerHTML = '';
+        }
+        
     } catch (error) {
         const errorCode = error.code;
         const errorMessage = error.message;

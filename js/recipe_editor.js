@@ -27,8 +27,12 @@ onAuthStateChanged(auth, async (user) => {
 
         let data = await response.json();
 
+        let greeting = document.getElementById('greeting');
+        if (greeting) {
+        greeting.innerHTML = `Welcome ${data.firstName} ${data.lastName}!`;}
+
         let myRecipesList = [];
-        myRecipesList = data;
+        myRecipesList = data.recipes;
 
         let myPublishedRecipes = [];
         let myDraftRecipes = [];
@@ -85,7 +89,7 @@ async function recipeSettings() {
     let recipeElement = document.getElementById('recipe');
 
     if (!pageId) {
-        recipeElement.innerHTML = '<p>No recipe selected.</p>';
+        recipeElement.innerHTML = '<h3>No recipe selected.</h3>';
         return;
     }
 
@@ -100,9 +104,9 @@ async function recipeSettings() {
 
     let data = await response.json();
     
-    for (let i = 0; i < data.length; i++) {
-        if (data[i].id === pageId) {
-            let recipe = data[i].properties;
+    for (let i = 0; i < data.recipes.length; i++) {
+        if (data.recipes[i].id === pageId) {
+            let recipe = data.recipes[i].properties;
             let name = recipe['Name of dish'].title[0].plain_text;
             let photo = recipe['Photo'].files[0].external.url;
             let ingredients = recipe['Ingredients'].rich_text[0].plain_text;
@@ -164,7 +168,7 @@ async function recipeSettings() {
         }
     }
     
-    recipeElement.innerHTML = '<p>Recipe not found.</p>';
+    recipeElement.innerHTML = '<h2>Recipe not found.</h2>';
 }
 
 async function createRecipe() {
