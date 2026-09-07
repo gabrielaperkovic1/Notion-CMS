@@ -34,7 +34,8 @@ async function loadRecipes() {
 }
 
 
-function filterRecipes(category) {
+function filterRecipes() {
+    let filteredCategory = document.getElementById('category').value;
     document.getElementById('recipes').innerHTML = ''
 
     for (let i = 0; i < recipesList.length; i++) {
@@ -42,12 +43,10 @@ function filterRecipes(category) {
 
         let recipeCategory = recipe['Category'].rich_text[0].plain_text;
    
-        if (category === 'All' || recipeCategory === category) {
+        if (filteredCategory === 'All' || recipeCategory === filteredCategory) {
             let recipeID = recipe['ID'].unique_id.number;
             let name = recipe['Name of dish'].title[0].plain_text;
             let photo = recipe['Photo'].files[0].external.url;
-            let ingredients = recipe['Ingredients'].rich_text[0].plain_text;
-            let instructions = recipe['Instructions'].rich_text[0].plain_text;
             let author = recipe['Author'].rich_text[0].plain_text;
             let prepTime =  recipe['Prep time'].rich_text[0].plain_text;
             let category = recipe['Category'].rich_text[0].plain_text;
@@ -69,8 +68,8 @@ function filterRecipes(category) {
 }
 
 
-function searchRecipes(search) {
-    search = search.toLowerCase();
+function searchRecipes() {
+    let search = document.getElementById('searchInput').value.toLowerCase();
     document.getElementById('recipes').innerHTML = '';
 
     for (let i = 0; i < recipesList.length; i++) {
